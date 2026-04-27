@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de IMC</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef2f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 280px;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      background: #007BFF;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    #resultado {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Calculadora de IMC</h2>
+
+    <input type="number" id="peso" placeholder="Peso (kg)">
+    <input type="number" id="altura" placeholder="Altura (m)">
+
+    <button onclick="calcularIMC()">Calcular</button>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    function calcularIMC() {
+      let peso = Number(document.getElementById("peso").value);
+      let altura = Number(document.getElementById("altura").value);
+      let resultado = document.getElementById("resultado");
+
+      if (!peso || !altura) {
+        resultado.innerHTML = "Preencha todos os campos corretamente!";
+        return;
+      }
+
+      let imc = peso / (altura * altura);
+      let classificacao = "";
+
+      if (imc < 18.5) classificacao = "Abaixo do peso";
+      else if (imc < 25) classificacao = "Peso normal";
+      else if (imc < 30) classificacao = "Sobrepeso";
+      else classificacao = "Obesidade";
+
+      resultado.innerHTML = `IMC: ${imc.toFixed(2)}<br>${classificacao}`;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabuada com Operações</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 260px;
+    }
+
+    input, select {
+      width: 90%;
+      padding: 8px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 8px 15px;
+      border: none;
+      background: #28a745;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #218838;
+    }
+
+    #resultado {
+      margin-top: 15px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Operações</h2>
+
+    <input type="number" id="numero" placeholder="Digite um número">
+
+    <select id="operacao">
+      <option value="soma">Soma (+)</option>
+      <option value="sub">Subtração (-)</option>
+      <option value="mult">Multiplicação (×)</option>
+      <option value="div">Divisão (÷)</option>
+    </select>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    function calcular() {
+      let num = Number(document.getElementById("numero").value);
+      let op = document.getElementById("operacao").value;
+      let resultado = document.getElementById("resultado");
+
+      if (!num && num !== 0) {
+        resultado.innerHTML = "Digite um número válido!";
+        return;
+      }
+
+      resultado.innerHTML = "";
+
+      for (let i = 0; i <= 10; i++) {
+        let r;
+
+        if (op === "soma") r = num + i;
+        else if (op === "sub") r = num - i;
+        else if (op === "mult") r = num * i;
+        else if (op === "div") r = i !== 0 ? (num / i).toFixed(2) : "∞";
+
+        resultado.innerHTML += `${num} ${simbolo(op)} ${i} = ${r}<br>`;
+      }
+    }
+
+    function simbolo(op) {
+      if (op === "soma") return "+";
+      if (op === "sub") return "-";
+      if (op === "mult") return "×";
+      if (op === "div") return "÷";
+    }
+  </script>
+
+</body>
+</html>

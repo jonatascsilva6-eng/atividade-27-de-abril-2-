@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Contador de Texto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .resultado {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Contador de Texto</h1>
+
+    <textarea id="texto" placeholder="Digite seu texto aqui..."></textarea>
+    <br>
+    <button onclick="analisarTexto()">Analisar</button>
+
+    <div class="resultado">
+        <p>Caracteres: <span id="caracteres">0</span></p>
+        <p>Palavras: <span id="palavras">0</span></p>
+        <p>Letras maiúsculas: <span id="maiusculas">0</span></p>
+    </div>
+
+    <script>
+        function analisarTexto() {
+            let texto = document.getElementById("texto").value;
+
+            // Contar caracteres
+            let caracteres = texto.length;
+
+            // Contar palavras
+            let palavras = texto.trim() === "" ? 0 : texto.trim().split(/\s+/).length;
+
+            // Contar letras maiúsculas
+            let maiusculas = (texto.match(/[A-Z]/g) || []).length;
+
+            // Atualizar resultados
+            document.getElementById("caracteres").textContent = caracteres;
+            document.getElementById("palavras").textContent = palavras;
+            document.getElementById("maiusculas").textContent = maiusculas;
+        }
+    </script>
+
+</body>
+</html>

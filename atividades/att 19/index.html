@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Dia da Semana</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: white;
+    }
+
+    .container {
+      background: rgba(255,255,255,0.1);
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    input, button {
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    input {
+      color: #333;
+    }
+
+    button {
+      background-color: #ff7eb3;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ff4f91;
+    }
+
+    .resultado {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Descubra o Dia da Semana</h2>
+  
+  <input type="date" id="data">
+
+  <button onclick="verificarDia()">Verificar</button>
+
+  <div class="resultado" id="resultado"></div>
+</div>
+
+<script>
+  function verificarDia() {
+    let dataInput = document.getElementById("data").value;
+
+    if (!dataInput) {
+      document.getElementById("resultado").innerText = "Escolha uma data!";
+      return;
+    }
+
+    let data = new Date(dataInput);
+    let dias = [
+      "Domingo",
+      "Segunda-feira",
+      "Terça-feira",
+      "Quarta-feira",
+      "Quinta-feira",
+      "Sexta-feira",
+      "Sábado"
+    ];
+
+    let diaSemana = dias[data.getDay()];
+
+    document.getElementById("resultado").innerText =
+      "O dia da semana é: " + diaSemana;
+  }
+</script>
+
+</body>
+</html>

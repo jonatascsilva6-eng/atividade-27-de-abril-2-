@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Verificador de Senha</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input {
+            padding: 10px;
+            width: 250px;
+            margin: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Verificador de Força da Senha</h2>
+
+    <input type="password" id="senha" placeholder="Digite sua senha"><br>
+    <button onclick="verificar()">Verificar</button>
+
+    <h3 id="resultado"></h3>
+</div>
+
+<script>
+    function verificar() {
+        let senha = document.getElementById("senha").value;
+        let resultado = document.getElementById("resultado");
+
+        if (senha.length === 0) {
+            resultado.innerText = "Digite uma senha!";
+            resultado.style.color = "black";
+        } else if (senha.length < 6) {
+            resultado.innerText = "Senha fraca";
+            resultado.style.color = "red";
+        } else if (senha.length <= 10) {
+            resultado.innerText = "Senha média";
+            resultado.style.color = "orange";
+        } else {
+            resultado.innerText = "Senha forte";
+            resultado.style.color = "green";
+        }
+    }
+</script>
+
+</body>
+</html>

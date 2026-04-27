@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Ordenar Nomes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: white;
+    }
+
+    .container {
+      background: rgba(255,255,255,0.1);
+      padding: 25px;
+      border-radius: 15px;
+      width: 350px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      border-radius: 8px;
+      border: none;
+      padding: 10px;
+      font-size: 14px;
+      resize: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #00c6ff;
+      color: white;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #0072ff;
+    }
+
+    .resultado {
+      margin-top: 15px;
+      text-align: left;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Ordenar Nomes</h2>
+
+  <textarea id="nomes" placeholder="Digite os nomes separados por vírgula ou linha"></textarea>
+
+  <button onclick="ordenarNomes()">Ordenar</button>
+
+  <div class="resultado" id="resultado"></div>
+</div>
+
+<script>
+  function ordenarNomes() {
+    let entrada = document.getElementById("nomes").value;
+
+    if (!entrada.trim()) {
+      document.getElementById("resultado").innerHTML = "Digite alguns nomes!";
+      return;
+    }
+
+    let lista = entrada.split(/[\n,]+/).map(nome => nome.trim()).filter(nome => nome !== "");
+
+    lista.sort((a, b) => a.localeCompare(b));
+
+    let html = "<h3>Nomes em ordem alfabética:</h3><ul>";
+    lista.forEach(nome => {
+      html += "<li>" + nome + "</li>";
+    });
+    html += "</ul>";
+
+    document.getElementById("resultado").innerHTML = html;
+  }
+</script>
+
+</body>
+</html>

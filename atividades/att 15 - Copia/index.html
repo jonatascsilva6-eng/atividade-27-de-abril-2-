@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cronômetro Simples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 60px;
+            background-color: #f4f4f4;
+        }
+
+        #display {
+            font-size: 60px;
+            margin: 20px;
+            color: #222;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Cronômetro ⏱️</h1>
+
+    <div id="display">0</div>
+
+    <button onclick="iniciar()">Iniciar</button>
+    <button onclick="pausar()">Pausar</button>
+    <button onclick="reiniciar()">Reiniciar</button>
+
+    <script>
+        let tempo = 0;
+        let timer = null;
+
+        function atualizar() {
+            document.getElementById("display").textContent = tempo;
+        }
+
+        function iniciar() {
+            if (timer !== null) return;
+
+            timer = setInterval(() => {
+                tempo++;
+                atualizar();
+            }, 1000);
+        }
+
+        function pausar() {
+            clearInterval(timer);
+            timer = null;
+        }
+
+        function reiniciar() {
+            pausar();
+            tempo = 0;
+            atualizar();
+        }
+
+        atualizar();
+    </script>
+
+</body>
+</html>

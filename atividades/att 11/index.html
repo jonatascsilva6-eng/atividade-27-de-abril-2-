@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Contador Regressivo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f4f4f4;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 40px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Contador Regressivo</h1>
+
+    <input type="number" id="numero" placeholder="Digite um número">
+    <br>
+    <button onclick="iniciarContagem()">Iniciar</button>
+
+    <div id="resultado">0</div>
+
+    <script>
+        let intervalo;
+
+        function iniciarContagem() {
+            let numero = parseInt(document.getElementById("numero").value);
+
+            // Limpa intervalo anterior se existir
+            clearInterval(intervalo);
+
+            if (isNaN(numero) || numero < 0) {
+                alert("Digite um número válido maior ou igual a zero.");
+                return;
+            }
+
+            document.getElementById("resultado").textContent = numero;
+
+            intervalo = setInterval(function() {
+                numero--;
+                document.getElementById("resultado").textContent = numero;
+
+                if (numero <= 0) {
+                    clearInterval(intervalo);
+                }
+            }, 1000); // 1 segundo
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Semáforo</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #222;
+      font-family: Arial, sans-serif;
+    }
+
+    .semaforo {
+      background: #333;
+      padding: 20px;
+      border-radius: 20px;
+      width: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .luz {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin: 10px 0;
+      background: #111;
+      transition: 0.3s;
+      opacity: 0.3;
+    }
+
+    .vermelho.ativo {
+      background: red;
+      opacity: 1;
+      box-shadow: 0 0 20px red;
+    }
+
+    .amarelo.ativo {
+      background: yellow;
+      opacity: 1;
+      box-shadow: 0 0 20px yellow;
+    }
+
+    .verde.ativo {
+      background: limegreen;
+      opacity: 1;
+      box-shadow: 0 0 20px limegreen;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #00c6ff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<div class="semaforo">
+  <div class="luz vermelho" id="vermelho"></div>
+  <div class="luz amarelo" id="amarelo"></div>
+  <div class="luz verde" id="verde"></div>
+
+  <button onclick="iniciar()">Iniciar</button>
+</div>
+
+<script>
+  let estado = 0;
+  let intervalo;
+
+  function atualizarSemaforo() {
+    document.getElementById("vermelho").classList.remove("ativo");
+    document.getElementById("amarelo").classList.remove("ativo");
+    document.getElementById("verde").classList.remove("ativo");
+
+    if (estado === 0) {
+      document.getElementById("verde").classList.add("ativo");
+    } 
+    else if (estado === 1) {
+      document.getElementById("amarelo").classList.add("ativo");
+    } 
+    else if (estado === 2) {
+      document.getElementById("vermelho").classList.add("ativo");
+    }
+
+    estado = (estado + 1) % 3;
+  }
+
+  function iniciar() {
+    if (intervalo) clearInterval(intervalo);
+    atualizarSemaforo();
+    intervalo = setInterval(atualizarSemaforo, 2000);
+  }
+</script>
+
+</body>
+</html>

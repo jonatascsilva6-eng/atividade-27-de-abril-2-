@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>To Do List</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1f4037, #99f2c8);
+      display: flex;
+      justify-content: center;
+      padding-top: 60px;
+      margin: 0;
+    }
+
+    .container {
+      width: 400px;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    input {
+      width: 70%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+
+    .add {
+      background: #00c853;
+      color: white;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    li {
+      background: #f1f1f1;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .actions button {
+      margin-left: 5px;
+      font-size: 12px;
+    }
+
+    .edit {
+      background: #ffc107;
+    }
+
+    .delete {
+      background: #e53935;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>To Do List</h2>
+
+  <input type="text" id="tarefa" placeholder="Digite uma tarefa">
+  <button class="add" onclick="adicionarTarefa()">Adicionar</button>
+
+  <ul id="lista"></ul>
+</div>
+
+<script>
+  let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+
+  function salvar() {
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+  }
+
+  function renderizar() {
+    let lista = document.getElementById("lista");
+    lista.innerHTML = "";
+
+    tarefas.forEach((tarefa, index) => {
+      lista.innerHTML += `
+        <li>
+          ${tarefa}
+          <div class="actions">
+            <button class="edit" onclick="editar(${index})">Editar</button>
+            <button class="delete" onclick="deletar(${index})">Excluir</button>
+          </div>
+        </li>
+      `;
+    });
+  }
+
+  function adicionarTarefa() {
+    let input = document.getElementById("tarefa");
+    let valor = input.value.trim();
+
+    if (valor === "") {
+      alert("Digite uma tarefa!");
+      return;
+    }
+
+    tarefas.push(valor);
+    input.value = "";
+
+    salvar();
+    renderizar();
+  }
+
+  function deletar(index) {
+    tarefas.splice(index, 1);
+    salvar();
+    renderizar();
+  }
+
+  function editar(index) {
+    let novo = prompt("Editar tarefa:", tarefas[index]);
+    if (novo !== null && novo.trim() !== "") {
+      tarefas[index] = novo.trim();
+      salvar();
+      renderizar();
+    }
+  }
+
+  renderizar();
+</script>
+
+</body>
+</html>

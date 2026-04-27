@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .calc {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 260px;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 6px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .buttons {
+      margin-top: 10px;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      color: white;
+      font-size: 14px;
+    }
+
+    .soma { background: #28a745; }
+    .sub { background: #dc3545; }
+    .mult { background: #ffc107; color: black; }
+    .div { background: #007bff; }
+
+    button:hover {
+      opacity: 0.85;
+    }
+
+    #resultado {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calc">
+    <h2>Calculadora</h2>
+
+    <input type="number" id="n1" placeholder="Primeiro número">
+    <input type="number" id="n2" placeholder="Segundo número">
+
+    <div class="buttons">
+      <button class="soma" onclick="calcular('+')">Somar</button>
+      <button class="sub" onclick="calcular('-')">Subtrair</button>
+      <button class="mult" onclick="calcular('*')">Multiplicar</button>
+      <button class="div" onclick="calcular('/')">Dividir</button>
+    </div>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    function calcular(op) {
+      let n1 = Number(document.getElementById("n1").value);
+      let n2 = Number(document.getElementById("n2").value);
+      let res = document.getElementById("resultado");
+
+      if (!n1 && n1 !== 0 || !n2 && n2 !== 0) {
+        res.innerHTML = "Digite números válidos!";
+        return;
+      }
+
+      let resultado;
+
+      if (op === '+') resultado = n1 + n2;
+      else if (op === '-') resultado = n1 - n2;
+      else if (op === '*') resultado = n1 * n2;
+      else if (op === '/') {
+        if (n2 === 0) {
+          res.innerHTML = "Não é possível dividir por zero!";
+          return;
+        }
+        resultado = n1 / n2;
+      }
+
+      res.innerHTML = "Resultado: " + resultado;
+    }
+  </script>
+
+</body>
+</html>

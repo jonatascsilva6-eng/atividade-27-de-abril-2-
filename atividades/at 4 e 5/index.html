@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercícios JS</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      gap: 20px;
+    }
+
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 260px;
+      text-align: center;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+    }
+
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 6px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 8px;
+      padding: 8px 15px;
+      border: none;
+      background: #007BFF;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .res {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- IDADE -->
+  <div class="box">
+    <h3>Classificação por Idade</h3>
+
+    <input type="number" id="idade" placeholder="Digite sua idade">
+    <button onclick="verificarIdade()">Verificar</button>
+
+    <div class="res" id="resIdade"></div>
+  </div>
+
+  <!-- MÉDIA -->
+  <div class="box">
+    <h3>Média do Aluno</h3>
+
+    <input type="number" id="n1" placeholder="Nota 1">
+    <input type="number" id="n2" placeholder="Nota 2">
+    <input type="number" id="n3" placeholder="Nota 3">
+
+    <button onclick="calcularMedia()">Calcular</button>
+
+    <div class="res" id="resMedia"></div>
+  </div>
+
+  <script>
+    function verificarIdade() {
+      let idade = Number(document.getElementById("idade").value);
+      let res = document.getElementById("resIdade");
+
+      if (!idade && idade !== 0) {
+        res.innerHTML = "Digite uma idade válida!";
+        return;
+      }
+
+      let tipo = "";
+
+      if (idade < 12) tipo = "Criança";
+      else if (idade < 18) tipo = "Adolescente";
+      else if (idade < 60) tipo = "Adulto";
+      else tipo = "Idoso";
+
+      res.innerHTML = tipo;
+    }
+
+    function calcularMedia() {
+      let n1 = Number(document.getElementById("n1").value);
+      let n2 = Number(document.getElementById("n2").value);
+      let n3 = Number(document.getElementById("n3").value);
+      let res = document.getElementById("resMedia");
+
+      if (!n1 && !n2 && !n3) {
+        res.innerHTML = "Preencha todas as notas!";
+        return;
+      }
+
+      let media = (n1 + n2 + n3) / 3;
+      let status = media >= 7 ? "Aprovado" : "Reprovado";
+
+      res.innerHTML = `Média: ${media.toFixed(2)}<br>${status}`;
+    }
+  </script>
+
+</body>
+</html>

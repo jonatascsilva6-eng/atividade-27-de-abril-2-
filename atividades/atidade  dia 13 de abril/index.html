@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="./style.css"/>
+<body>
+    <h1>Sistema de Cadastros de Tarefas</h1>
+
+    <div class="main-conteiner">
+    <div class="conteiner">
+        <form id="taskform">
+
+        <label for= "taskDescription">Task name</label>
+        <input type="text" required id="taskName">
+
+        <label>Task name</label>
+        <textarea required id="taskDescription"></textarea>
+
+        <label >Prioridade</label>
+         <select id="taskPrio">
+          <option value="Baixo">Baixo</option>
+          <option value="Medio">Medio</option>
+          <option value="Alta">Alta</option>
+         </select>
+         
+         <label for="">Date</label>
+         <input type="date" required id="taskDate">
+
+         <button onclick="">Add Task</button>
+         </form>
+    
+
+    </div>
+    <div id="taskList">
+    <h2>Lista de Tarefas</h2>
+
+    <table id ="taskTable">
+        <thead>
+            <tr>
+<th>Name</th>
+<th>Prioridade</th>
+<th>Data</th>
+<th>Ações</th>
+
+
+            </tr>
+        </thead>
+        <tbody id="taskTableBody">
+
+        </tbody>
+
+
+    </table>
+
+</div>
+    </div>
+
+
+
+
+</body>
+
+
+</html>

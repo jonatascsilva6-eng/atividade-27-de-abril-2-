@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo de Adivinhação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f4f4f4;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+        }
+        #mensagem {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Jogo de Adivinhação 🎯</h1>
+    <p>Tente adivinhar o número entre 1 e 100</p>
+
+    <input type="number" id="palpite" placeholder="Digite seu palpite">
+    <br>
+    <button onclick="verificarPalpite()">Tentar</button>
+
+    <div id="mensagem"></div>
+
+    <script>
+        // Sorteia número entre 1 e 100
+        let numeroSecreto = Math.floor(Math.random() * 100) + 1;
+
+        function verificarPalpite() {
+            let palpite = parseInt(document.getElementById("palpite").value);
+            let mensagem = document.getElementById("mensagem");
+
+            if (isNaN(palpite) || palpite < 1 || palpite > 100) {
+                mensagem.textContent = "Digite um número válido entre 1 e 100.";
+                return;
+            }
+
+            if (palpite === numeroSecreto) {
+                mensagem.textContent = "🎉 Parabéns! Você acertou!";
+            } else if (palpite < numeroSecreto) {
+                mensagem.textContent = "📉 Tente um número maior!";
+            } else {
+                mensagem.textContent = "📈 Tente um número menor!";
+            }
+        }
+    </script>
+
+</body>
+</html>

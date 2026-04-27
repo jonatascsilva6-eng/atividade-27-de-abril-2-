@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Par ou Ímpar</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #43cea2, #185a9d);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 260px;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      background: #007BFF;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    #resultado {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Par ou Ímpar</h2>
+
+    <input type="number" id="numero" placeholder="Digite um número">
+    <button onclick="verificar()">Verificar</button>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    function verificar() {
+      let num = Number(document.getElementById("numero").value);
+      let res = document.getElementById("resultado");
+
+      if (!num && num !== 0) {
+        res.innerHTML = "Digite um número válido!";
+        return;
+      }
+
+      if (num % 2 === 0) {
+        res.innerHTML = "Número PAR";
+        res.style.color = "green";
+      } else {
+        res.innerHTML = "Número ÍMPAR";
+        res.style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>

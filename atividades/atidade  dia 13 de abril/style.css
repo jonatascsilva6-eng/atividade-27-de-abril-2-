@@ -1,0 +1,92 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+    background-color: white;
+    overflow-y: hidden;
+    height: 100%;
+}
+
+.main-conteiner{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* #taskform */
+
+#taskList{
+    width: 60%;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: auto;
+    background-color: white;
+    padding: 0;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.);
+}
+
+#taskList h2{
+    padding: 20px 20px 10px 20px;
+    margin: 0;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+#taskTable{
+    width: 380px;
+    border-collapse: collapse;
+    margin: 0 20px 20px 20px;
+}
+
+#taskTable th, #taskTable td{
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#taskTable thead th{
+    position: sticky;
+    top: 0px;
+    background: white;
+    z-index: 2;
+}
+
+#taskTable tr:nth-child(even){
+    background-color: red;
+}
+
+#taskTable tr:hover{
+    background-color: #ddd;
+}
+label{
+    display: block;
+    margin-bottom: 3px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input, select, textarea{
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button{
+    background-color: #ccc;
+    color: #fff;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+#taskTable button:nth-child(2){
+    background-color: red;
+}
+
+#taskTable button:nth-child(2):hover{
+    background-color: #c8233c;
+}

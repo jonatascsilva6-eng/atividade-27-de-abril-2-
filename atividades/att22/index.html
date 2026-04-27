@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerador de Senhas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #141e30, #243b55);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: white;
+    }
+
+    .container {
+      background: rgba(255,255,255,0.1);
+      padding: 25px;
+      border-radius: 15px;
+      width: 320px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+
+    input {
+      color: #333;
+    }
+
+    button {
+      background-color: #00c6ff;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #0072ff;
+    }
+
+    .senha {
+      margin-top: 15px;
+      font-weight: bold;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Gerador de Senhas</h2>
+
+  <input type="number" id="tamanho" placeholder="Quantidade de caracteres" min="4" max="50">
+
+  <button onclick="gerarSenha()">Gerar Senha</button>
+
+  <div class="senha" id="senha"></div>
+</div>
+
+<script>
+  function gerarSenha() {
+    let tamanho = parseInt(document.getElementById("tamanho").value);
+
+    if (isNaN(tamanho) || tamanho < 4) {
+      document.getElementById("senha").innerText = "Digite um número válido (mínimo 4).";
+      return;
+    }
+
+    let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=<>?";
+    let senha = "";
+
+    for (let i = 0; i < tamanho; i++) {
+      let randomIndex = Math.floor(Math.random() * chars.length);
+      senha += chars[randomIndex];
+    }
+
+    document.getElementById("senha").innerText = "Senha: " + senha;
+  }
+</script>
+
+</body>
+</html>

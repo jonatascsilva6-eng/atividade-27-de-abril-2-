@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Verificador de Número</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #ff6f61;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #e85b50;
+    }
+
+    .resultado {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Verificador de Número</h2>
+
+  <input type="number" id="numero" placeholder="Digite um número">
+
+  <button onclick="verificar()">Verificar</button>
+
+  <div class="resultado" id="resultado"></div>
+</div>
+
+<script>
+  function verificar() {
+    let num = parseFloat(document.getElementById("numero").value);
+
+    if (isNaN(num)) {
+      document.getElementById("resultado").innerText = "Digite um número válido!";
+      return;
+    }
+
+    if (num > 0) {
+      document.getElementById("resultado").innerText = "O número é POSITIVO.";
+    } else if (num < 0) {
+      document.getElementById("resultado").innerText = "O número é NEGATIVO.";
+    } else {
+      document.getElementById("resultado").innerText = "O número é ZERO.";
+    }
+  }
+</script>
+
+</body>
+</html>
